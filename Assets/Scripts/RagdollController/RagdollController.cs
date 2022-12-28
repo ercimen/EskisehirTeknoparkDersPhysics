@@ -17,12 +17,8 @@ public class RagdollController : MonoBehaviour
 
         foreach (Rigidbody childRigidBody in rigidBodies)
         {
+            childRigidBody.velocity = Vector3.zero;
             childRigidBody.isKinematic = value;
-
-            if (value == false)
-            {
-                childRigidBody.velocity = Vector3.zero;
-            }
         }
 
     }
@@ -45,6 +41,8 @@ public class RagdollController : MonoBehaviour
 
     public void SetRagdollMode(bool value)
     {
+        IsRagdollEnabled = value;
+
         if (value)
         {
             _animator.enabled = false;
@@ -54,6 +52,7 @@ public class RagdollController : MonoBehaviour
         else
         {
             _animator.enabled = true;
+
             SetKinematicRigidBodies(true);
             SetColliders(false);
         }

@@ -1807,7 +1807,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52595b16032480c4b8c3b6546d58bb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0.5
+  deadLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
+  aliveLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!95 &366262867381262389
 Animator:
   serializedVersion: 4
@@ -1871,7 +1877,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &6247616881189224916
 GameObject:

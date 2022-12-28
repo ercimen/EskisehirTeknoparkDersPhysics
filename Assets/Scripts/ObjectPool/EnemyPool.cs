@@ -12,6 +12,7 @@ public class EnemyPool : MonoBehaviour
 
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private int enemyCount;
+    [SerializeField] private float spawnRadius;
 
     [SerializeField] private Transform spawner;
     [SerializeField] private float spawnDelay;
@@ -48,11 +49,16 @@ public class EnemyPool : MonoBehaviour
     private void GetEnemy()
     {
         // Eðer aktif etmeye çalýþtýðým düþman zaten aktifse bir þey yapmadan geri dön
-        if (_enemyList[_currentEnemyNumber].activeInHierarchy) return;
+      //  if (_enemyList[_currentEnemyNumber].activeInHierarchy) return;
 
-        Vector3 position = RandomPointOnCircleEdge(5f);
+        Vector3 position = RandomPointOnCircleEdge(spawnRadius);
 
-        _enemyList[_currentEnemyNumber].transform.position = position;
+        float randomZ = Random.Range(-3, 3);
+        Vector3 randomPosition = new Vector3(0, 0, randomZ);
+
+
+        _enemyList[_currentEnemyNumber].transform.position = position + randomPosition;
+
         _enemyList[_currentEnemyNumber].SetActive(true);
 
         ControlEnemyNumber();
